@@ -1,0 +1,15 @@
+<section id="main">
+    <nav>
+        <h6>CATEGORIES</h6>
+        <ul>
+            <% for(let category of categories){ %>
+                <li><a href="/category/<%= category.category %> "><i class="fas fa-angle-double-right"></i>
+                        <%= category.category %>
+                    </a></li>
+                <li>
+
+                </li>
+                <% } %>
+        </ul>
+    </nav>
+</section>
