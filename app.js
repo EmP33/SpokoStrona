@@ -4,7 +4,11 @@ const path = require('path');
 const ejsMate = require('ejs-mate');
 const { urlencoded } = require('body-parser');
 const mongoose = require('mongoose');
+const methodOverride = require('method-override');
+
 const Category = require('./models/categories');
+const Post = require('./models/posts');
+
 
 const dbURL = 'mongodb://localhost:27017/kursy'
 
@@ -23,6 +27,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.use(urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, 'public')))
+app.use(methodOverride("_method"));
 
 app.get('/', async (req, res) => {
     const categories = await Category.find({});
@@ -40,10 +45,20 @@ app.get('/category/:categoryName', async (req, res) => {
     res.render('main/category', { categories, categoryName })
 })
 
+app.get('/addPost', async (req, res) => {
+    const categories = await Category.find({});
+    res.render('main/addPost', { categories })
+})
+
 app.post('/', async (req, res) => {
     const category = await new Category(req.body);
     await category.save();
-    res.send(category)
+    res.redirect('/')
+})
+
+app.delete('/:categoryid', async (req, res) => {
+    const deletedCat = await Category.findByIdAndDelete(req.params.categoryid);
+    res.redirect('/');
 })
 
 

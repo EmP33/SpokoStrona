@@ -1,6 +1,31 @@
 <% layout('layouts/boilerplate') %>
+    <h2 class="mb-4">Create Category</h2>
     <form action="/" method="POST">
-        <label for="category">Create Category</label>
-        <input type="text" id="category" name="category">
-        <button class="btn btn-info text-white">Submit</button>
+        <div class="row">
+            <div class="mb-3 col-5">
+                <input class="form-control" type="text" id="category" name="category" required>
+            </div>
+            <div class="col-2">
+                <button class="btn btn-info text-white">Submit</button>
+            </div>
+        </div>
     </form>
+    <h3 class="my-4">Delete Categories</h3>
+    <ul class="list-group">
+        <% for(let category of categories){ %>
+            <li class="list-group-item">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h3>
+                            <%= category.category %>
+                        </h3>
+                    </div>
+                    <div>
+                        <form action="/<%= category._id %>?_method=DELETE" method="POST">
+                            <button class="btn btn-warning">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </li>
+            <% }%>
+    </ul>
