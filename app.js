@@ -19,7 +19,6 @@ const User = require('./models/admin');
 
 const Category = require('./models/categories');
 const Post = require('./models/posts');
-const { truncate } = require('fs');
 
 
 const dbURL = process.env.DB_URL || 'mongodb://localhost:27017/kursy';
@@ -77,7 +76,7 @@ app.use((req, res, next) => {
 })
 
 app.get('/', async (req, res) => {
-    const categories = await Category.find({});
+    const categories = await Category.find({}).populate('posts');
     res.render('main/home', { categories });
 })
 
