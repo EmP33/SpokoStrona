@@ -1,0 +1,22 @@
+<% layout('layouts/boilerplate') %>
+    <div class="row text-center">
+        <div class="col-12">
+            <form action="/category/<%= category._id %>" method="POST">
+                <h2 class="mb-4 d-flex justify-content-between">Create Post
+                    <button class="btn btn-success text-white">Post</button>
+                </h2>
+
+                <div class="mb-3">
+                    <input class="form-control" placeholder="Title" type="text" id="title" name="title" required>
+                </div>
+                <div class="mb-3">
+                    <input class="form-control" placeholder="Subtitle" type="text" id="title" name="subtitle" required>
+                </div>
+                <textarea id="mytextarea" name="body" placeholder="Post body"></textarea>
+
+            </form>
+        </div>
+    </div>
+    <script>
+
+    </script>

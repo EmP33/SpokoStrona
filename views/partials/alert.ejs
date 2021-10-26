@@ -1,0 +1,25 @@
+<button class="btn btn-outline-danger mx-1" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete</button>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-div">
+                    <div class="icon-box">
+                        <i class="far fa-times-circle material-icons"></i>
+                    </div>
+                    <h4 class="modal-title">Are you sure?</h4>
+                </div>
+            </div>
+            <div class="modal-body">
+                <p>Do you really want to delete these records? This process cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form action="/category/<%= category.category %>/<%= post._id %>?_method=DELETE" method="POST">
+                    <button class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<% layout('layouts/boilerplate') %>
+    <div class="card" style="width: 18rem; margin: 0 auto;">
+        <div class="card-body">
+            <h5 class="card-title">Login</h5>
+            <form action="/logowanie" method="POST" novalidate class="needs-validation">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username:</label>
+                    <input class="form-control" type="text" id="username" name="username" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password:</label>
+                    <input class="form-control" type="password" id="password" name="password" required>
+                </div>
+                <button class="btn btn-success">Login</button>
+            </form>
+        </div>
+    </div>

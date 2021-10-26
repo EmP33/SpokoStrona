@@ -1,0 +1,38 @@
+<% layout('layouts/boilerplate') %>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h2 class="card-title text-primary">
+                        <%= post.title %>
+                            <hr>
+                    </h2>
+                    <p class="card-text my-4" id="div">
+                        <%= post.body %>
+                    </p>
+                    <p>
+                    <div class="d-flex">
+                        <a href="/category/<%= category.category %>" class="btn btn-outline-warning mx-1">Back to
+                            Category</a>
+                        <% if(currentUser){ %>
+                            <a href="/category/<%= category.category %>/<%= post._id %>/edit"
+                                class="btn btn-outline-info mx-1">
+                                Edit</a>
+                            <%- include('../partials/alert') %>
+                                <% } %>
+                    </div>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $.fn.toHtml = function () {
+            return $(this).html($(this).text())
+        }
+        $(document).ready(function () {
+            $('#div').toHtml()
+
+        });
+    </script>

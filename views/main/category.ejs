@@ -2,6 +2,28 @@
     <h1>
         <%= categoryName.toUpperCase() %>
     </h1>
-    <article>
-        <p><a href="/addPost">Add Post</a></p>
-    </article>
+    <main>
+        <% if(currentUser){ %>
+            <p><a href="/category/<%= category._id %>/addPost">Add Post</a></p>
+            <% } %>
+                <article>
+                    <% for(let post of category.posts){ %>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-primary">
+                                            <a href='/category/<%= category.category %>/<%= post._id %>'>
+                                                <%= post.title %>
+                                            </a>
+                                        </h5>
+                                        <p class="card-text div">
+                                            <%= post.subtitle%>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <% } %>
+                </article>
+    </main>
